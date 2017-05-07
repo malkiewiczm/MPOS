@@ -8,6 +8,7 @@ typedef struct {
 	HSTREAM stream;
 	char playing;
 	TitleDir *loaded_song;
+	HANDLE lockette;
 } SongPlayer;
 
 SongPlayer *SongPlayer_new(void);
@@ -17,5 +18,7 @@ void SongPlayer_pause(SongPlayer*);
 void SongPlayer_stop(SongPlayer*);
 void SongPlayer_toggle_pause(SongPlayer*);
 char SongPlayer_song_ended(SongPlayer*);
+void SongPlayer_lock(SongPlayer*);
+void SongPlayer_unlock(SongPlayer*);
 
 #endif

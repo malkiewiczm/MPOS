@@ -64,7 +64,7 @@ SongPlayer *Song_Player;
 char Run_Thread;
 HANDLE Background_Lockette;
 
-void next_track()
+inline void next_track()
 {
 	if (Playlist->count > 0) {
 		if (SongPlayer_load(Song_Player, (TitleDir*)Queue_pop(Playlist)))
@@ -94,6 +94,7 @@ void BackgroundProc(void* ptr)
 	int chk_key[4] = { VK_MEDIA_STOP, VK_MEDIA_PLAY_PAUSE, VK_MEDIA_NEXT_TRACK, VK_MEDIA_PREV_TRACK };
 	char chk_down[4] = { 0 };
 	while (Run_Thread) {
+		SongPlayer_lock(Song_Player);
 		int i;
 		for (i = 0; i < 4; i++) {
 			int key = chk_key[i];
@@ -108,6 +109,7 @@ void BackgroundProc(void* ptr)
 		}
 		if (SongPlayer_song_ended(Song_Player))
 			next_track();
+		SongPlayer_unlock(Song_Player);
 		Sleep(20);
 	}
 	ReleaseMutex(Background_Lockette);
@@ -188,7 +190,9 @@ int main(int argc, char **argv)
 			case RI_QUIT:
 				break;
 			case RI_PLAY:
+				SongPlayer_lock(Song_Player);
 				next_track();
+				SongPlayer_unlock(Song_Player);
 				break;
 			case 0:
 			case RI_ADD:
