@@ -183,6 +183,7 @@ int main(int argc, char **argv)
 			}
 			zero_cursor();
 			int k = read_int();
+			SongPlayer_lock(Song_Player);
 			switch (k) {
 			case RI_HARDQUIT:
 				menu --;
@@ -190,9 +191,7 @@ int main(int argc, char **argv)
 			case RI_QUIT:
 				break;
 			case RI_PLAY:
-				SongPlayer_lock(Song_Player);
 				next_track();
-				SongPlayer_unlock(Song_Player);
 				break;
 			case 0:
 			case RI_ADD:
@@ -205,6 +204,7 @@ int main(int argc, char **argv)
 				SongPlayer_stop(Song_Player);
 				break;
 			}
+			SongPlayer_unlock(Song_Player);
 			break;
 		}
 		case 2: {
@@ -215,6 +215,7 @@ int main(int argc, char **argv)
 			}
 			zero_cursor();
 			int k = read_int();
+			SongPlayer_lock(Song_Player);
 			switch (k) {
 			case RI_QUIT:
 				menu --;
@@ -231,6 +232,7 @@ int main(int argc, char **argv)
 					menu ++;
 				}	
 			}
+			SongPlayer_unlock(Song_Player);
 			break;
 		}
 		case 3: {
@@ -243,6 +245,7 @@ int main(int argc, char **argv)
 			}
 			zero_cursor();
 			int k = read_int();
+			SongPlayer_lock(Song_Player);
 			switch (k) {
 			case RI_QUIT:
 				menu --;
@@ -260,6 +263,7 @@ int main(int argc, char **argv)
 					menu ++;
 				}
 			}
+			SongPlayer_unlock(Song_Player);
 			break;
 		}
 		case 4: {
@@ -272,6 +276,7 @@ int main(int argc, char **argv)
 			}
 			zero_cursor();
 			int k = read_int();
+			SongPlayer_lock(Song_Player);
 			switch (k) {
 			case RI_PLAY:
 				Queue_pop_all(Playlist);
@@ -292,6 +297,7 @@ int main(int argc, char **argv)
 					menu ++;
 				}
 			}
+			SongPlayer_unlock(Song_Player);
 			break;
 		}
 		case 5: {
@@ -299,7 +305,9 @@ int main(int argc, char **argv)
 			puts(sel_album_title);
 			puts(sel_song->title);
 			zero_cursor();
-			switch (read_int()) {
+			int k = read_int();
+			SongPlayer_lock(Song_Player);
+			switch (k) {
 			case RI_PLAY:
 				Queue_pop_all(Playlist);
 			case RI_ADD:
@@ -314,6 +322,7 @@ int main(int argc, char **argv)
 				SongPlayer_stop(Song_Player);
 				break;
 			}
+			SongPlayer_unlock(Song_Player);
 			break;
 		}
 		default:
