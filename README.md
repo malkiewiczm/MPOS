@@ -30,6 +30,7 @@ The basic format is as follows:
 - `_` Indicates an album title that IS NOT IN A FOLDER NAMED THE SAME
 - `/` Indicates the path of the album if the above mark is used
 - `*` Indicates the end of the file
+
 Example:
 ```
 +Artist name
@@ -42,5 +43,5 @@ _Album 1
 ```
 
 ### Navigation in the program
-The first screen is your current playlist, press SPACE or TAB to move to the next screen, where you can select an artist. Choose an artist by typing the number and pressing TAB or SPACE. Select an album using the same method. On an album you can either select an individual song to add, or stay on this screen to act on the whole album. Press W to add the songs to your playlist. Press R to clear you playlist and set it to the songs you are viewing. Press Q to cancel and go up a screen. When a song is playing, press P to toggle play / pause, or O to kill the current song. On the playlist screen, pressing R will kill the current song and move to the next. ALTERNATIVELY you can use the media keys for play / pause, stop, and skip.
+The first screen is your current playlist, press SPACE or TAB to move to the next screen, where you can select an artist. Choose an artist by typing the number and pressing TAB or SPACE. Select an album using the same method. On an album you can either select an individual song to add, or stay on this screen to act on the whole album. Press W to add the songs to your playlist. Press R to clear you playlist and set it to the songs you are viewing. Press Q to cancel and go up a screen. When a song is playing, press P to toggle play / pause, I to restart the song, or O to kill the current song. On the playlist screen, pressing R will kill the current song and move to the next. ALTERNATIVELY you can use the media keys for play / pause, stop, and skip.
 
