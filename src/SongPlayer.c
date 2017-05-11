@@ -67,7 +67,14 @@ void SongPlayer_toggle_pause(SongPlayer *self)
 	}
 }
 
-char SongPlayer_song_ended(SongPlayer* self)
+void SongPlayer_restart(SongPlayer *self)
+{
+	if (self->stream) {
+		BASS_ChannelSetPosition(self->stream, 0, BASS_POS_BYTE);
+	}
+}
+
+char SongPlayer_song_ended(SongPlayer *self)
 {
 	if (self->stream) {
 		return BASS_ChannelGetPosition(self->stream, BASS_POS_BYTE) == BASS_ChannelGetLength(self->stream, BASS_POS_BYTE);

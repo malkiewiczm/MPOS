@@ -23,11 +23,13 @@ The basic format is as follows:
 -Album 3
 +Another artist
 -An album by this artist
+*
 ```
-`+` Indicates an artist
-`-` Indicates an album IN A FOLDER OF THE SAME NAME
-`_` Indicates an album title that IS NOT IN A FOLDER NAMED THE SAME
-`/` Indicates the path of the album if the above mark is used
+- `+` Indicates an artist
+- `-` Indicates an album IN A FOLDER OF THE SAME NAME
+- `_` Indicates an album title that IS NOT IN A FOLDER NAMED THE SAME
+- `/` Indicates the path of the album if the above mark is used
+- `*` Indicates the end of the file
 Example:
 ```
 +Artist name
@@ -36,6 +38,7 @@ _Album 1
 -Album2
 +Another artist
 -An album by this artist
+*
 ```
 
 ### Navigation in the program

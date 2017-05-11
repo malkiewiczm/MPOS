@@ -17,6 +17,7 @@ void SongPlayer_play(SongPlayer*);
 void SongPlayer_pause(SongPlayer*);
 void SongPlayer_stop(SongPlayer*);
 void SongPlayer_toggle_pause(SongPlayer*);
+void SongPlayer_restart(SongPlayer*);
 char SongPlayer_song_ended(SongPlayer*);
 void SongPlayer_lock(SongPlayer*);
 void SongPlayer_unlock(SongPlayer*);

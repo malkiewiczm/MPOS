@@ -12,6 +12,7 @@
 #define RI_ADD -3
 #define RI_PAUSE -4
 #define RI_STOP -5
+#define RI_RESTART -6
 
 int read_console_int(HANDLE handle)
 {
@@ -37,6 +38,8 @@ int read_console_int(HANDLE handle)
 			return RI_PAUSE;
 		case 'O':
 			return RI_STOP;
+		case 'I':
+			return RI_RESTART;
 		case 'T':
 		case VK_OEM_MINUS:
 			res = 0;
@@ -75,9 +78,11 @@ inline void next_track()
 inline void on_key_down(int key)
 {
 	switch (key) {
-	case VK_MEDIA_PREV_TRACK:
 	case VK_MEDIA_STOP:
 		SongPlayer_stop(Song_Player);
+		break;
+	case VK_MEDIA_PREV_TRACK:
+		SongPlayer_restart(Song_Player);
 		break;
 	case VK_MEDIA_PLAY_PAUSE:
 		SongPlayer_toggle_pause(Song_Player);
@@ -203,6 +208,9 @@ int main(int argc, char **argv)
 			case RI_STOP:
 				SongPlayer_stop(Song_Player);
 				break;
+			case RI_RESTART:
+				SongPlayer_restart(Song_Player);
+				break;
 			}
 			SongPlayer_unlock(Song_Player);
 			break;
@@ -225,6 +233,9 @@ int main(int argc, char **argv)
 				break;
 			case RI_STOP:
 				SongPlayer_stop(Song_Player);
+				break;
+			case RI_RESTART:
+				SongPlayer_restart(Song_Player);
 				break;
 			default:
 				if (k >= 0 && k < db->artists->count) {
@@ -255,6 +266,9 @@ int main(int argc, char **argv)
 				break;
 			case RI_STOP:
 				SongPlayer_stop(Song_Player);
+				break;
+			case RI_RESTART:
+				SongPlayer_restart(Song_Player);
 				break;
 			default:
 				if (k >= 0 && k < n) {
@@ -291,6 +305,9 @@ int main(int argc, char **argv)
 			case RI_STOP:
 				SongPlayer_stop(Song_Player);
 				break;
+			case RI_RESTART:
+				SongPlayer_restart(Song_Player);
+				break;
 			default:
 				if (k >= 0 && k < n) {
 					sel_song = (TitleDir*)Vector_get(songs, k);
@@ -320,6 +337,9 @@ int main(int argc, char **argv)
 				break;
 			case RI_STOP:
 				SongPlayer_stop(Song_Player);
+				break;
+			case RI_RESTART:
+				SongPlayer_restart(Song_Player);
 				break;
 			}
 			SongPlayer_unlock(Song_Player);

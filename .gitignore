@@ -19,6 +19,7 @@
 *.so
 *.so.*
 *.dylib
+bass.h
 
 # Executables
 *.exe
